@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Plan | Bloom Admin</title>
+    <link rel="stylesheet" href="/bloom-style.css">
+
+   <style>
+    /* Form Container */
+    .admin-form-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: var(--PolarBear); /* soft Bloom neutral */
+        padding: var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Title */
+    .admin-title {
+        text-align: center;
+        color: var(--leaf-700);
+        margin-bottom: var(--spacing-md);
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    /* Labels */
+    .admin-form label {
+        display: block;
+        font-weight: 600;
+        color: var(--leaf-600);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* Inputs + Textareas */
+    .admin-form input,
+    .admin-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: var(--spacing-md);
+        border-radius: var(--radius-md);
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        background: #ffffff;
+        color: var(--char-900);
+        transition: 0.2s ease;
+    }
+
+    /* Focus effect */
+    .admin-form input:focus,
+    .admin-form textarea:focus {
+        border-color: var(--leaf-500);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(101, 154, 84, 0.25);
+    }
+
+    /* Submit Button */
+    .admin-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--leaf-600);
+        color: white;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.2s ease;
+        margin-top: var(--spacing-sm);
+    }
+
+    .admin-btn:hover {
+        background: var(--leaf-700);
+    }
+</style>
+
+</head>
+
+<body>
+
+<%- include("../../partials/header") %>
+
+<div class="admin-form-container">
+    <h1 class="admin-title">Add New Plan</h1>
+
+    <!-- IMPORTANT: Correct action -->
+    <form action="/admin/plans/new" method="POST" class="admin-form">
+
+        <label>Title</label>
+        <input type="text" name="title" required>
+
+        <label>Description</label>
+        <textarea name="description" required></textarea>
+
+        <label>Price (SAR)</label>
+        <input type="number" name="price" step="0.01" required>
+
+        <label>Features (separate with |)</label>
+        <textarea name="features"></textarea>
+
+        <!-- SUBMIT BUTTON ADDED -->
+        <button type="submit" class="admin-btn">Create Plan</button>
+
+    </form>
+</div>
+
+<%- include("../../partials/footer") %>
+
+</body>
+</html>

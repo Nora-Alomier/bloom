@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/bloom-style.css">
+
+<!-- Header with Creative Enhancements -->
+<header class="header creative-header">
+
+  <!-- Floating Leaf Decorations -->
+  <span class="leaf-decoration leaf-1">🍃</span>
+  <span class="leaf-decoration leaf-2">🌿</span>
+
+  <!-- Logo with Image and Text -->
+  <div class="logo logo-enhanced">
+    <a href="/" class="logo-link">
+      <img src="/images/bloom_logo_trimmed.png" alt="Bloom Logo" class="logo-image logo-glow">
+      <div class="logo-text">
+        <h3 class="logo-title">Bloom</h3>
+        <div class="logo-tagline">Refresh Every Room</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Navigation Links with Enhanced Pills -->
+  <nav class="nav nav-pills" id="mainNav">
+    <ul class="nav-links">
+      <li><a href="/about" class="nav-link nav-enhanced" data-page="home">Home</a></li>
+      <li><a href="/shop" class="nav-link nav-enhanced" data-page="shop">Shop</a></li>
+      <li><a href="/plans" class="nav-link nav-enhanced" data-page="plans">Plans</a></li>
+      <li><a href="/#about-us" class="nav-link nav-enhanced" data-page="about">About Us</a></li>
+      <li><a href="/contact" class="nav-link nav-enhanced" data-page="contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Icons -->
+  <div class="nav-icons">
+
+    <!-- Cart icon -->
+    <a href="/cart" class="icon-btn cart-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span class="badge">0</span>
+    </a>
+
+    <!-- Profile icon -->
+    <a href="/profile" class="icon-btn profile-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </a>
+
+  </div>
+</header>
+
+<script>
+  // Highlight active nav item
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const currentPath = window.location.pathname;
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+  });
+</script>

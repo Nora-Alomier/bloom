@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom | Subscription Plans</title>
+    <link rel="stylesheet" href="/bloom-style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <%- include("../partials/header") %>
+
+    <section class="plans-section">
+        <div class="container">
+            <h2 class="section-title">Our Subscription Plans</h2>
+            <p class="section-subtitle">Choose the plan that fits your lifestyle</p>
+
+            <div class="plans-grid">
+
+                <% if (plans.length === 0) { %>
+                    <p style="text-align:center; margin-top:20px;">No plans available yet.</p>
+                <% } %>
+
+                <% plans.forEach(plan => { %>
+                    <div class="plan-card">
+
+                        <!-- Title + Price -->
+                        <div class="plan-header">
+                            <h3><%= plan.title %></h3>
+                            <div class="plan-price">
+                                <% if (plan.price === null) { %>
+                                    <span class="price">Custom</span>
+                                <% } else if (plan.price === 0) { %>
+                                    <span class="price">Free</span>
+                                <% } else { %>
+                                    <span class="price"><%= plan.price %></span>
+                                    <span class="currency">SAR/month</span>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="plan-description"><%= plan.description %></p>
+
+                        <!-- Features -->
+                        <ul class="plan-features">
+                            <% plan.features.split("|").forEach(feature => { %>
+                                <li><i class="fas fa-check"></i> <%= feature %></li>
+                            <% }) %>
+                        </ul>
+
+                        <!-- Choose button -->
+                        <form action="/cart/add/<%= plan.id %>" method="POST">
+                            <button class="btn btn-primary">
+                                Choose <%= plan.title.includes("Plan") ? plan.title.replace(" Plan","") : plan.title %>
+                            </button>
+                        </form>
+
+                    </div>
+                <% }) %>
+
+            </div>
+
+        </div>
+    </section>
+
+
+<!-- ================= DUMMY PLAN SEARCH (FORM VERSION) ================= -->
+
+<section class="plans-search-section">
+
+    <h2 class="plans-table-title">Search Plans (Dummy Data)</h2>
+
+    <!-- Search Form -->
+    <form id="searchForm" class="search-form">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-box" 
+            placeholder="Enter plan title, description, or feature..."
+        />
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+    <!-- Results Table -->
+    <table class="plans-table" id="resultsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Features</th>
+                <th>Price (SAR)</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Results appear here -->
+        </tbody>
+    </table>
+
+</section>
+
+
+<script src="/js/dummy-plans.js"></script>
+<script>
+
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+    const tbody = document.getElementById("tableBody");
+
+    // Render table data
+    function renderTable(data) {
+        tbody.innerHTML = "";
+
+        if (data.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" style="text-align:center; padding:10px;">
+                        No results found
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        data.forEach(plan => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${plan.id}</td>
+                <td>${plan.title}</td>
+                <td>${plan.description}</td>
+                <td>${plan.features}</td>
+                <td>${plan.price}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Show all plans initially
+    renderTable(planData);
+
+    // Form Search
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); // stop reload
+
+        const keyword = input.value.toLowerCase().trim();
+
+        const filtered = planData.filter(p =>
+            p.title.toLowerCase().includes(keyword) ||
+            p.description.toLowerCase().includes(keyword) ||
+            p.features.toLowerCase().includes(keyword)
+        );
+
+        renderTable(filtered);
+    });
+
+</script>
+
+
+
+    <!-- Footer -->
+    <%- include("../partials/footer") %>
+
+</body>
+</html>

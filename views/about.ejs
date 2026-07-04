@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | Home Page</title>
+
+  <link rel="stylesheet" href="/bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <%- include("partials/header") %>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Refresh Every Room</h1>
+        <p>Discover everything you need to know about your plants. Treat them with kindness and they will take care of you.</p>
+
+        <div class="hero-buttons">
+          <a href="/plans" class="btn btn-primary">Explore Plans</a>
+          <a href="/shop" class="btn btn-secondary">Shop Now</a>
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+        <img src="/images/homeplant.png" alt="Hanging Plant" class="hanging-plant">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section section-divider">
+    <div class="container">
+      <h2 class="section-title">Why Choose Bloom?</h2>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Wide Variety</h3>
+          <p>Discover a diverse collection of indoor and outdoor plants to brighten up any space.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Fast Delivery</h3>
+          <p>Get your plants delivered fresh and quickly to your doorstep with care.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <h3>Expert Guidance</h3>
+          <p>Learn how to take care of your plants with easy-to-follow tips and expert advice.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>Eco-Friendly</h3>
+          <p>All our practices are sustainable and environmentally friendly.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers Section -->
+  <section class="best-sellers-section section-divider">
+    <div class="container">
+      <h2 class="section-title">Best Sellers</h2>
+      <p class="section-subtitle">Our most popular plants loved by customers</p>
+
+      <div class="bestseller-grid">
+
+        <!-- Product 1 -->
+        <div class="bestseller-card">
+          <div class="bestseller-image">
+            <img src="/images/Bonsai-Plant-Ceramic-Pot.jpg.webp" alt="Bonsai Plant">
+            <input type="checkbox" id="wishlist-home-1" class="wishlist-checkbox">
+            <label for="wishlist-home-1" class="wishlist-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </label>
+          </div>
+
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">Bonsai Plant Ceramic Pot</h3>
+
+            <div class="bestseller-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="review-count">(124)</span>
+            </div>
+
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR 300</span>
+              <button class="btn-add-cart">Add to Cart</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bestseller-card">
+          <div class="bestseller-image">
+            <img src="/images/Indoor_Epipremnum_Aaureum_Money_Plant.jpg.webp" alt="Money Plant">
+            <input type="checkbox" id="wishlist-home-2" class="wishlist-checkbox">
+            <label for="wishlist-home-2" class="wishlist-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </label>
+          </div>
+
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">Money Plant</h3>
+
+            <div class="bestseller-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="review-count">(98)</span>
+            </div>
+
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR 180</span>
+              <button class="btn-add-cart">Add to Cart</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bestseller-card">
+          <div class="bestseller-image">
+            <img src="/images/Peace_Lily_Plant_Mud_Pot.jpg.webp" alt="Peace Lily">
+            <input type="checkbox" id="wishlist-home-3" class="wishlist-checkbox">
+            <label for="wishlist-home-3" class="wishlist-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </label>
+          </div>
+
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">Peace Lily Plant</h3>
+
+            <div class="bestseller-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="review-count">(156)</span>
+            </div>
+
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR 220</span>
+              <button class="btn-add-cart">Add to Cart</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bestseller-card">
+          <div class="bestseller-image">
+            <img src="/images/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg.webp" alt="Snake Plant">
+            <input type="checkbox" id="wishlist-home-4" class="wishlist-checkbox">
+            <label for="wishlist-home-4" class="wishlist-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </label>
+          </div>
+
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">Snake Plant</h3>
+
+            <div class="bestseller-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="review-count">(203)</span>
+            </div>
+
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR 250</span>
+              <button class="btn-add-cart">Add to Cart</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="view-all-container">
+        <a href="/shop" class="btn btn-primary">View All Plants</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Plant Care -->
+  <section class="plant-care-section section-divider">
+    <div class="container">
+      <div class="plant-care-content">
+
+        <div class="plant-care-text">
+          <h2>Proper Care of <span class="highlight">Plants</span></h2>
+          <p>
+            Looking for an easier way to care for your plants? Our AI tool provides
+            straightforward tips to keep them happy and healthy all year.
+            Start now and show your plants the love they need.
+          </p>
+          <a href="/shop" class="btn btn-primary">Shop Now</a>
+        </div>
+
+        <div class="plant-care-image">
+          <img src="/images/image2222.png" alt="Plant Care">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="about-section section-divider" id="about-us">
+    <div class="container">
+
+      <h2 class="section-title">About Us</h2>
+
+      <div class="about-content">
+        <p class="about-text">
+          At Bloom, we are passionate about bringing the beauty and benefits of plants into every home.
+          Founded by a team of plant enthusiasts, we provide a seamless platform to explore, learn about,
+          and purchase a wide variety of indoor and outdoor plants.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Offers -->
+  <section class="offers-section section-divider">
+    <div class="container">
+
+      <h2 class="section-title">What We Offer</h2>
+
+      <div class="offer-card scroll-animate">
+        <img src="/images/Areca_Plant_White_Pot.jpg.webp" alt="Easy Shopping">
+        <div class="offer-content">
+          <h3>Easy Shopping</h3>
+          <p>Browse and purchase from our curated collection of indoor and outdoor plants.</p>
+          <a href="/shop" class="btn">Shop Now</a>
+        </div>
+      </div>
+
+      <div class="offer-card scroll-animate">
+        <img src="/images/Artificial_Kentia_Palm_Plant.jpg.webp" alt="Care Guides">
+        <div class="offer-content">
+          <h3>Care Guides & Reminders</h3>
+          <p>Access comprehensive care tips to help your plants thrive in any environment.</p>
+          <a href="/plans" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="offer-card scroll-animate">
+        <img src="/images/Indoor_Epipremnum_Aaureum_Money_Plant.jpg.webp" alt="AI Assistant">
+        <div class="offer-content">
+          <h3>AI Plant Assistant</h3>
+          <p>Get personalized answers to your plant care questions.</p>
+          <a href="#" class="btn">Try Assistant</a>
+        </div>
+      </div>
+
+      <div class="offer-card scroll-animate">
+        <img src="/images/Zamia_Plant_White_Ceramic_Pot.jpg.webp" alt="Support">
+        <div class="offer-content">
+          <h3>Subscription Plans & Support</h3>
+          <p>Choose from flexible plans with benefits and 24/7 priority support.</p>
+          <a href="/plans" class="btn">View Plans</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="founders-section section-divider">
+    <div class="container">
+
+      <h2 class="section-title">Meet Our Founders</h2>
+
+      <div class="founders-grid">
+
+        <div class="founder-card">
+          <div class="founder-image">
+            <img src="/images/imagesA.png" alt="">
+          </div>
+          <h4>Raneem Abumoustafa</h4>
+          <p>UI/UX and frontend expert.</p>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-image">
+            <img src="/images/imagesN.png" alt="">
+          </div>
+          <h4>Roaa Hamdan</h4>
+          <p>Creative UI designer.</p>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-image">
+            <img src="/images/imagesRN.png" alt="">
+          </div>
+          <h4>Nora Alomair</h4>
+          <p>Content specialist.</p>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-image">
+            <img src="/images/fahda.png" alt="">
+          </div>
+          <h4>Fahdah Abdullah</h4>
+          <p>Backend and integration specialist.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <%- include("partials/footer") %>
+
+  <script src="/bloom-interactions.js"></script>
+
+  <script>
+    // Scroll animation
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("animate-in");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".scroll-animate").forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

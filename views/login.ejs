@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Bloom | Login & Sign-up</title>
+
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+ <!-- Your login page CSS -->
+ <link rel="stylesheet" href="/styles.css">
+ <style>
+  .admin-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #1b5e20;  /* deep green */
+  color: white;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.admin-btn:hover {
+  background-color: #144d1a;
+}
+
+ </style>
+</head>
+
+<body>
+
+ <main>
+   <div class="box">
+     <div class="inner-box">
+
+       <!-- ================================= -->
+       <!--           FORMS SECTION            -->
+       <!-- ================================= -->
+       <div class="forms-wrap">
+
+         <!-- ============== SIGN-IN ============== -->
+         <form class="sign-in-form" id="loginForm" action="/about" method="get" novalidate>
+
+           <div class="logo">
+             <img src="/images/bloom_logo_trimmed.png" alt="Bloom logo">
+             <h4>Bloom</h4>
+           </div>
+
+           <div class="heading">
+             <h2>Welcome Back!</h2>
+             <h6>Don't have an account?</h6>
+             <label for="flip" class="toggle">Sign Up</label>
+           </div>
+
+           <div class="actual-form">
+
+             <div class="input-wrap">
+               <input type="email" class="input-field" autocomplete="off" required placeholder=" ">
+               <label>Email</label>
+               <span class="error-msg">Please enter a valid email.</span>
+             </div>
+
+             <div class="input-wrap">
+               <input type="password" id="loginPassword" class="input-field" autocomplete="off"
+                minlength="8" pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Must include uppercase, lowercase & a digit"
+                placeholder=" " required>
+
+               <label>Password</label>
+               <span class="error-msg">Letters & digits, min 8 characters.</span>
+
+               <i class="bi bi-eye-slash toggle-eye" role="button" tabindex="0"></i>
+             </div>
+
+             <div class="row-between">
+               <div class="remember-me">
+                 <input type="checkbox" id="rememberMe" name="rememberMe">
+                 <label for="rememberMe">Remember me</label>
+               </div>
+               <a href="#" class="text-link">Forgot Password?</a>
+             </div>
+
+             <input type="submit" value="Sign In" class="sign-btn">
+
+             <p class="text">
+               Forgotten your password? 
+               <a href="#" class="text-link">Get help</a> signing in
+             </p>
+
+           </div>
+         </form>
+
+         <!-- ============== SIGN-UP ============== -->
+         <form class="sign-up-form" action="/about" method="get" novalidate>
+
+           <div class="logo">
+             <img src="/images/bloom_logo_trimmed.png" alt="Bloom logo">
+             <h4>Bloom</h4>
+           </div>
+
+           <div class="heading">
+             <h2>Create Account</h2>
+             <h6>Already have an account?</h6>
+             <label for="flip" class="toggle">Sign In</label>
+           </div>
+
+           <div class="actual-form">
+
+             <div class="input-wrap">
+               <input type="text" class="input-field" autocomplete="off"
+                pattern="[A-Za-z]{3,}" title="Name must be at least 3 letters"
+                placeholder=" " required>
+               <label>Name</label>
+               <span class="error-msg">Min 3 letters</span>
+             </div>
+
+             <div class="input-wrap">
+               <input type="email" class="input-field" autocomplete="off" required placeholder=" ">
+               <label>Email</label>
+               <span class="error-msg">Please enter a valid email.</span>
+             </div>
+
+             <div class="input-wrap">
+               <input type="password" id="signupPassword" class="input-field" autocomplete="off"
+                minlength="8" pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must include uppercase, lowercase & a digit" placeholder=" " required>
+               <label>Password</label>
+               <span class="error-msg">Letters & digits, min 8 characters.</span>
+               <i class="bi bi-eye-slash toggle-eye" role="button" tabindex="0"></i>
+             </div>
+
+             <div class="terms-agreement">
+               <input type="checkbox" id="agreeTerms" required>
+               <label for="agreeTerms">
+                 I agree to the 
+                 <a href="#" id="termsLink" class="text-link">Terms of Services</a> and
+                 <a href="#" id="privacyLink" class="text-link">Privacy Policy</a>
+               </label>
+             </div>
+
+             <input type="submit" value="Sign Up" class="sign-btn">
+             <!-- Admin Sign-In Button -->
+            <a href="/admin/plans" class="admin-btn">Sign up as Admin</a>
+
+
+           </div>
+         </form>
+
+       </div>
+
+       <!-- ================================= -->
+       <!--         RIGHT SIDE CONTENT         -->
+       <!-- ================================= -->
+       <div class="carousel">
+         <div class="hero-copy">
+           <h2>Refresh Every Room<br>Let Your Plants Bloom</h2>
+
+           <ul class="services">
+             <li><strong>Expert Care Guides</strong><br>Step-by-step tips for members.</li>
+             <li><strong>Monthly Subscription Boxes</strong><br>Seasonal plants delivered.</li>
+           </ul>
+         </div>
+       </div>
+
+     </div>
+   </div>
+ </main>
+
+ <!-- ============================= -->
+ <!--           JS LOGIC            -->
+ <!-- ============================= -->
+
+<script>
+  // Toggle password visibility
+  document.querySelectorAll('.toggle-eye').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = icon.closest('.input-wrap').querySelector('input');
+      const masked = input.type === 'password';
+      input.type = masked ? 'text' : 'password';
+      icon.classList.toggle('bi-eye', masked);
+      icon.classList.toggle('bi-eye-slash', !masked);
+    });
+  });
+
+  // Slide between forms
+  const toggleBtns = document.querySelectorAll('.toggle');
+  const main = document.querySelector('main');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      main.classList.toggle('sign-up-mode');
+    });
+  });
+
+  // Floating label
+  document.querySelectorAll('.input-field').forEach(inp => {
+    inp.addEventListener('focus', () => inp.classList.add('active'));
+    inp.addEventListener('blur', () => { if (!inp.value) inp.classList.remove('active'); });
+  });
+</script>
+
+<!-- ============================= -->
+<!--        MODALS SECTION         -->
+<!-- ============================= -->
+
+<dialog id="tosModal">
+  <h2>Terms of Service</h2>
+  <div class="modal-body">
+  
+  </div>
+  <button class="modal-close">Close</button>
+</dialog>
+
+<dialog id="ppModal">
+  <h2>Privacy Policy</h2>
+  <div class="modal-body">
+  
+  </div>
+  <button class="modal-close">Close</button>
+</dialog>
+
+<script>
+  const tosLink = document.getElementById('termsLink');
+  const ppLink = document.getElementById('privacyLink');
+  const tosModal = document.getElementById('tosModal');
+  const ppModal = document.getElementById('ppModal');
+  const closes = document.querySelectorAll('.modal-close');
+
+  tosLink.addEventListener('click', e => { e.preventDefault(); tosModal.showModal(); });
+  ppLink.addEventListener('click', e => { e.preventDefault(); ppModal.showModal(); });
+
+  closes.forEach(btn => btn.addEventListener('click', () => {
+    btn.closest('dialog').close();
+  }));
+</script>
+
+</body>
+</html>

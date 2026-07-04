@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom | Shopping Cart</title>
+
+    <link rel="stylesheet" href="/bloom-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <%- include("../partials/header") %>
+
+    <!-- Cart Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <p>Review your items before checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-content">
+
+                <div class="cart-items">
+
+                    <% if (cart.length === 0) { %>
+                        <p>Your cart is empty.</p>
+                    <% } %>
+
+                    <% cart.forEach(item => { %>
+                        <div class="cart-item">
+
+                            <img src="<%= item.image %>" alt="<%= item.title %>" class="cart-item-image">
+
+                            <div class="cart-item-details">
+                                <h3><%= item.title %></h3>
+                                <p class="cart-item-price">
+                                    SAR <%= (Number(item.price) || 0).toFixed(2) %>
+                                </p>
+                            </div>
+
+                            <!-- QUANTITY -->
+                            <div class="cart-item-quantity">
+                                <form action="/cart/update-product/<%= item.product_id %>" method="POST" style="display:flex; gap:6px;">
+
+                                    <!-- MINUS -->
+                                    <button type="submit" class="qty-btn minus" 
+                                            name="quantity"
+                                            value="<%= item.quantity - 1 %>"
+                                            <%= item.quantity <= 1 ? "disabled" : "" %>>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                    <!-- INPUT FIELD (renamed to 'qty') -->
+                                    <input type="number" 
+                                           name="qty" 
+                                           value="<%= item.quantity %>" 
+                                           min="1" 
+                                           class="qty-input">
+
+                                    <!-- PLUS -->
+                                    <button type="submit" class="qty-btn plus"
+                                            name="quantity"
+                                            value="<%= item.quantity + 1 %>">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+
+                                </form>
+                            </div>
+
+                            <!-- ITEM TOTAL -->
+                            <div class="cart-item-total">
+                                <p>
+                                    SAR <%= ((Number(item.price) || 0) * item.quantity).toFixed(2) %>
+                                </p>
+                            </div>
+
+                            <!-- DELETE -->
+                            <form action="/cart/remove-product/<%= item.product_id %>" method="POST">
+                                <button class="cart-item-remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+
+                        </div>
+                    <% }) %>
+
+                </div>
+
+                <!-- SUMMARY -->
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>SAR <%= totals.subtotal.toFixed(2) %></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span>SAR <%= totals.delivery.toFixed(2) %></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Tax (15%)</span>
+                        <span>SAR <%= totals.tax.toFixed(2) %></span>
+                    </div>
+
+                    <hr>
+
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>SAR <%= totals.total.toFixed(2) %></span>
+                    </div>
+
+                    <button class="btn btn-primary btn-block">Proceed to Checkout</button>
+                    <a href="/shop" class="btn btn-secondary btn-block">Continue Shopping</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include("../partials/footer") %>
+
+    <script src="/bloom-interactions.js"></script>
+
+</body>
+</html>

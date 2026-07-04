@@ -1,0 +1,115 @@
+<%- include('../partials/header') %>
+
+<link rel="stylesheet" href="/css/shop.css">
+
+<!-- FILTER TOGGLE (mobile) -->
+<input type="checkbox" id="filterToggle" class="filter-toggle-checkbox">
+<div class="filter-overlay"></div>
+
+<div class="filter-toggle-wrapper">
+    <label for="filterToggle" class="filter-toggle-btn">
+        <svg width="20" height="20"><circle cx="10" cy="10" r="9" stroke="currentColor" fill="none"/></svg>
+        Filters
+    </label>
+</div>
+
+<div class="container">
+
+    <!-- ============= SIDEBAR ============= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title-wrapper">
+            <h3 class="sidebar-title">Filter</h3>
+            <label for="filterToggle" class="filter-close-btn">&times;</label>
+        </div>
+
+        <div class="filter-section">
+            <h4 class="filter-heading">Plant Type</h4>
+
+            <label class="checkbox-label">
+                <input type="checkbox" class="category-checkbox"> Indoor Plants
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" class="category-checkbox"> Outdoor Plants
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" class="category-checkbox"> Succulents
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" class="category-checkbox"> Artificial Plants
+            </label>
+        </div>
+
+        <div class="filter-section">
+            <h4 class="filter-heading">Price Range</h4>
+            <div class="price-inputs">
+                <input type="number" placeholder="Min" class="price-input">
+                <input type="number" placeholder="Max" class="price-input">
+            </div>
+            <button class="set-price-btn">Set price</button>
+        </div>
+
+    </aside>
+
+    <!-- ============= MAIN CONTENT ============= -->
+    <main class="main-content">
+
+        <!-- Search & Sorting -->
+        <div class="sort-bar">
+            <span class="sort-label">Sort</span>
+
+            <button class="sort-btn active">Relevance</button>
+            <button class="sort-btn">Popular</button>
+            <button class="sort-btn">Most New</button>
+
+            <!-- VIEW TOGGLE -->
+            <div class="view-toggle">
+                <input type="radio" name="view" id="view-grid" class="view-radio" checked>
+                <label for="view-grid" class="view-btn"><i class="fa-solid fa-border-all"></i></label>
+
+                <input type="radio" name="view" id="view-large" class="view-radio">
+                <label for="view-large" class="view-btn"><i class="fa-regular fa-square"></i></label>
+
+                <input type="radio" name="view" id="view-list" class="view-radio">
+                <label for="view-list" class="view-btn"><i class="fa-solid fa-list"></i></label>
+            </div>
+        </div>
+
+        <!-- ============= PRODUCT GRID ============= -->
+        <div class="product-grid">
+            <% products.forEach(p => { %>
+
+            <div class="product-card">
+
+                <div class="product-image-container">
+                    <img src="<%= p.image %>" class="product-image" alt="<%= p.name %>">
+                </div>
+
+                <a href="/shop/product/<%= p.id %>" class="product-link">
+
+                    <div class="product-name"><%= p.name %></div>
+
+                    <div class="product-rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <span class="review-count">(<%= p.reviews_count %> reviews)</span>
+                    </div>
+
+                    <div class="product-footer">
+                        <div class="product-price">SAR <%= p.price %></div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+
+                </a>
+            </div>
+
+            <% }) %>
+        </div>
+
+    </main>
+
+</div>
+
+<%- include('../partials/footer') %>

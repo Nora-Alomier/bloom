@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | Contact Us</title>
+
+  <link rel="stylesheet" href="/bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <%- include("partials/header") %>
+
+  <!-- Contact Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h2>Send Us a Message</h2>
+
+          <form class="contact-form" action="#" method="post">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="How can we help?">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <a href="/about" class="btn btn-secondary">Cancel</a>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-wrapper">
+          <h2>Get In Touch</h2>
+          <p>We're here to help and answer any question you might have.</p>
+
+          <div class="contact-info-list">
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <a href="mailto:bloom@plants.com">bloom@plants.com</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Phone</h4>
+                <a href="tel:+966500000000">+966 500 000 000</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Location</h4>
+                <p>Riyadh, Saudi Arabia</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Business Hours</h4>
+                <p>Sun - Thu: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Socials -->
+          <div class="contact-socials">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT -->
+  <input type="checkbox" id="chatbot-toggle" class="chatbot-toggle-checkbox">
+
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h3>Chat with us</h3>
+      <label for="chatbot-toggle" class="chatbot-close">✕</label>
+    </div>
+
+    <div class="chatbot-messages">
+      <div class="chatbot-message bot-message">
+        <div class="message-avatar">
+          <img src="/images/bloom_logo_trimmed.png" alt="Bloom" class="avatar-logo">
+        </div>
+        <div class="message-content">
+          <p>Hi! Welcome to Bloom! 👋</p>
+          <p>How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-input-area">
+      <input type="text" class="chatbot-input" placeholder="Type your message...">
+      <button class="chatbot-send-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <label for="chatbot-toggle" class="chatbot-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </label>
+
+  <script src="/bloom-interactions.js"></script>
+
+    <!-- FOOTER -->
+    <%- include("partials/footer") %>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | My Wishlist</title>
+
+  <link rel="stylesheet" href="/bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <%- include("partials/header") %>
+
+  <!-- Wishlist Section -->
+  <section class="wishlist-section">
+    <div class="container">
+      <h2 class="section-title">My Wishlist</h2>
+      <p class="section-subtitle">Your favorite plants saved for later</p>
+      
+      <div id="wishlistContainer">
+        <!-- Default empty state -->
+        <div class="wishlist-empty">
+          <i class="fas fa-heart"></i>
+          <h3>Your wishlist is empty</h3>
+          <p>Start adding plants you love to your wishlist!</p>
+          <a href="/shop" class="btn btn-primary">Browse Plants</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <%- include("partials/footer") %>
+
+  <!-- Chatbot Widget -->
+  <input type="checkbox" id="chatbot-toggle" class="chatbot-toggle-checkbox">
+
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h3>Chat with us</h3>
+      <label for="chatbot-toggle" class="chatbot-close">✕</label>
+    </div>
+
+    <div class="chatbot-messages">
+      <div class="chatbot-message bot-message">
+        <div class="message-avatar">
+          <img src="/images/bloom_logo_trimmed.png" alt="Bloom" class="avatar-logo">
+        </div>
+        <div class="message-content">
+          <p>Hi! Welcome to Bloom! 👋</p>
+          <p>How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-input-area">
+      <input type="text" class="chatbot-input" placeholder="Type your message...">
+      <button class="chatbot-send-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <label for="chatbot-toggle" class="chatbot-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </label>
+
+  <script src="/bloom-interactions.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadWishlist();
+    });
+
+    function loadWishlist() {
+      const wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+      const container = document.getElementById('wishlistContainer');
+
+      if (wishlist.length === 0) return;
+
+      container.innerHTML = '<div class="wishlist-grid"></div>';
+      const grid = container.querySelector('.wishlist-grid');
+
+      wishlist.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'bestseller-card';
+
+        card.innerHTML = `
+          <div class="bestseller-image">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">${item.name}</h3>
+
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR ${item.price}</span>
+              <button class="btn-add-cart" data-index="${index}">Add to Cart</button>
+            </div>
+
+            <button class="remove-wishlist" data-index="${index}">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      document.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const index = this.getAttribute('data-index');
+          const item = wishlist[index];
+          addToCart(item.name, `SAR ${item.price}`, item.image);
+        });
+      });
+
+      document.querySelectorAll('.remove-wishlist').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const index = this.getAttribute('data-index');
+          wishlist.splice(index, 1);
+          localStorage.setItem('bloomWishlist', JSON.stringify(wishlist));
+          loadWishlist();
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
